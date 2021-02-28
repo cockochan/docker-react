@@ -1,0 +1,9 @@
+sudo: required
+services: docker
+
+
+before install:
+  - docker build -t cockochan/docker-react -f frontend/Dockerfile.dev .
+
+script:
+  - docker run -e CI=true cockochan/docker-react npm run test
